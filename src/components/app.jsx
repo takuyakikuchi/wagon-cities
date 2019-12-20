@@ -30,12 +30,14 @@ const cities = [
   { name: 'Lyon', address: '23 Rue Paul Montrochet, 69002 Lyon', slug: 'lyon' },
 ];
 
+const activeCity = { name: 'Tokyo', address: '2-11-3 Meguro, Meguro-ku, Tokyo ', slug: 'tokyo' };
+
 const App = () => {
   return (
     <div className="app">
       <div className="app">
         <CityList cities={cities} />
-        <ActiveCity />
+        <ActiveCity activeCity={activeCity} />
       </div>
     </div>
   );
