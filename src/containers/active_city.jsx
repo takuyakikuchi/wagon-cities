@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const ActiveCity = (props) => {
   if (!props.activeCity) {
@@ -20,4 +21,10 @@ const ActiveCity = (props) => {
   );
 };
 
-export default ActiveCity;
+function mapStateToProps(state) {
+  return {
+    activeCity: state.activeCity
+  };
+}
+
+export default connect(mapStateToProps)(ActiveCity);

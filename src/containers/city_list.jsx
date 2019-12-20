@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import City from './city';
 
 class CityList extends Component {
   renderList() {
-    return this.props.cities.map((city, index) => {
+    return this.props.cities.map((city) => {
       return (
-        <City key={city.name} city={city} index={index} selectCity={this.props.selectCity} />
+        <City key={city.name} city={city} />
       );
     });
   }
@@ -20,4 +21,10 @@ class CityList extends Component {
   }
 }
 
-export default CityList;
+function mapStateToProps(state) {
+  return {
+    cities: state.cities
+  };
+}
+
+export default connect(mapStateToProps)(CityList);
