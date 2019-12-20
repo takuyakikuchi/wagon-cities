@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import CityList from '../containers/city_list';
 import ActiveCity from '../containers/active_city';
@@ -32,15 +32,31 @@ const cities = [
 
 const activeCity = { name: 'Tokyo', address: '2-11-3 Meguro, Meguro-ku, Tokyo ', slug: 'tokyo' };
 
-const App = () => {
-  return (
-    <div className="app">
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cities: cities,
+      activeCity: activeCity
+    };
+  }
+
+  selectCity = (index) => {
+    this.setState({
+      activeCity: cities[index]
+    });
+  }
+
+  render() {
+    return (
       <div className="app">
-        <CityList cities={cities} />
-        <ActiveCity activeCity={activeCity} />
+        <div className="app">
+          <CityList cities={this.state.cities} selectCity={this.selectCity} />
+          <ActiveCity activeCity={this.state.activeCity} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default App;

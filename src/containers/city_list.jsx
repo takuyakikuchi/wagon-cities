@@ -4,9 +4,9 @@ import City from './city';
 
 class CityList extends Component {
   renderList() {
-    return this.props.cities.map((city) => {
+    return this.props.cities.map((city, index) => {
       return (
-        <City key={city.name} city={city} />
+        <City key={city.name} city={city} index={index} selectCity={this.props.selectCity} />
       );
     });
   }
